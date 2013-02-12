@@ -1,9 +1,12 @@
 action :create do
+
+  tpl_file = new_resource.template.nil? ? new_resource.name : new_resource.template
+
   template "#{node["monit"]["includes_dir"]}/#{new_resource.name}.monitrc" do
     owner "root"
     group "root"
     mode  "0644"
-    source "#{new_resource.name}.monitrc.erb"
+    source "#{tpl_file}.monitrc.erb"
     variables new_resource.variables
     notifies :restart, "service[monit]", :immediately
     action :create
