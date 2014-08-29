@@ -36,7 +36,7 @@ default["monit"]["mail"] = {
   :password => nil,
   :from     => "monit@$HOST",
   :subject  => "$SERVICE $EVENT at $DATE",
-  :message  => "Monit $ACTION $SERVICE at $DATE on $HOST,\n\nDutifully,\nMonit",
+  :message  => "Monit $ACTION $SERVICE at $DATE on $HOST:\n$DESCRIPTION\n\nDutifully,\nMonit",
   :tls      => false,
   :timeout  => 30
 }
